@@ -24,11 +24,24 @@ image1 = imageio.imread('./train_images/abra.png')
 image2 = imageio.imread('./train_images/absol.png')
 
 gan_io.save_list([image1, image2], './prep_data/train.dat', 255)
-list = gan_io.load_list('./prep_data/train.dat')
-print(image2[60][60])
+# list = gan_io.load_list('./prep_data/train.dat')
 
-print(list[1][60][60])
-print(np.array(image2).shape)
-print(np.array(list[1]).shape)
-plt.imshow(list[1])
-plt.show()
+mini_list = []
+
+for image in [image1, image2]:
+    mini_image = imtr.image_minify(image2)
+    mini_list.append(mini_image)
+
+gan_io.save_list(mini_list, './prep_data/train_mini.dat', 255)
+
+# print(image2[60][60])
+
+# print(list[1][60][60])
+# print(np.array(image2).shape)
+# print(np.array(list[1]).shape) 
+# plt.imshow(list[1])
+# plt.show()
+
+ 
+# plt.imshow(imtr.image_minify(image2))
+# plt.show()
